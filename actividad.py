@@ -21,12 +21,8 @@ dA = Crypto.Util.number.inverse(e, phiA)
 print("Llave privada: ", dA, "\n")
 
 #Mensaje en hash
-#msg = 'Hola tonotos'
-#hash = int.from_bytes(msg.encode('utf-8'), byteorder='big')
-hash = hashlib.new('sha256')
-hash.update(b"Hola tonotos")
-hash_value = hash.hexdigest()
-hash_int = int(hash_value, 16)
+hash = hashlib.sha256(b"Hola tonotos").hexdigest()
+hash_int = int(hash, 16)
 
 #Firma
 firma = pow(hash_int, dA, nA)
